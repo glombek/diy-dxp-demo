@@ -1,0 +1,64 @@
+﻿@using Clean.Core.Models.ViewModels
+@using DiyDxp.Web.Models.ViewModel
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<AboutYouViewModel>
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@{
+	Layout = "master.cshtml";
+}
+
+@await Html.PartialAsync("~/Views/Partials/pageHeader.cshtml", new PageHeaderViewModel(Model.Name, Model.Value<string>("title"), Model.Value<string>("subtitle"), Model.Value<IPublishedContent>("mainImage")))
+
+<div class="container">
+	@if (Model.PersonName != null)
+	{
+		<dl>
+			<dt>Name</dt>
+			<dd>@Model.PersonName.ToFirstUpper()</dd>
+
+
+			<dt>Guessed age</dt>
+			<dd>@Model.Age</dd>
+
+			@if (Model.Gender != null)
+			{
+				<dt>Guessed gender</dt>
+				<dd>
+					@switch (@Model.Gender.Value.Item1)
+					{
+						case "male":
+							<text>🚹</text>
+							break;
+						case "female":
+							<text>🚺</text>
+							break;
+						default:
+							<text>?</text>
+							break;
+					}
+					@Model.Gender.Value.Item1 <small>(@(Model.Gender.Value.Item2 * 100)%)</small>
+				</dd>
+				<dd></dd>
+			}
+
+			@if (Model.Nationality != null)
+			{
+				<dt>Guessed Nationality</dt>
+				@foreach (var n in Model.Nationality)
+				{
+					<dd><img src="https://countryflagsapi.com/svg/@n.Key" title="@n.Key" style="height: 1em" /> @n.Key <small>(@(Math.Round(n.Value * 100, 2))%)</small></dd>
+				}
+			}
+		</dl>
+
+		<hr />
+		<h2>Who's next?!</h2>
+	}
+
+	<form action="@Model.Url()" method="GET">
+		<fieldset>
+			<label for="name">Your first name:</label>
+			<input type="text" id="name" name="name" />
+			<input type="submit" />
+		</fieldset>
+	</form>
+</div>
