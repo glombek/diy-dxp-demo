@@ -1,0 +1,33 @@
+﻿<div ng-controller="MySupportAppDashboardController as vm">
+
+    <uui-form>
+        <form id="MySupportAppDashboardForm">
+
+            <uui-form-layout-item>
+                <uui-label for="mySupportAppDashboardName" slot="label">Name</uui-label>
+                <!--<uui-input id="mySupportAppDashboardName" name="name" type="text" ng-model="vm.name" value="{{vm.name}}" label="Name"></uui-input>-->
+                <input type="text" id="mySupportAppDashboardName" name="name" ng-model="vm.name" class="umb-property-editor umb-textstring textstring">
+            </uui-form-layout-item>
+
+            <uui-form-layout-item>
+                <uui-label for="mySupportAppDashboardEmail" slot="label" required="">Email</uui-label>
+                <!--<uui-input id="mySupportAppDashboardEmail" name="email" type="email" required ng-model="vm.email" value="{{vm.email}}" label="Email"></uui-input>-->
+                <input type="text" id="mySupportAppDashboardName" name="email" ng-model="vm.email" class="umb-property-editor umb-textstring textstring" required>
+            </uui-form-layout-item>
+
+            <uui-form-layout-item>
+                <uui-label for="mySupportAppDashboardMessage" slot="label" required="">Message</uui-label>
+                <!--<uui-textarea id="mySupportAppDashboardMessage" name="message" required ng-model="vm.message" value="{{vm.message}}" label="Message"></uui-textarea>-->
+                <textarea ng-model="vm.message" id="mySupportAppDashboardMessage" name="message" rows="10" class="umb-property-editor umb-textarea textstring" required></textarea>
+            </uui-form-layout-item>
+
+            <div>
+                <uui-button type="submit" label="Submit" look="primary" state="{{vm.state}}" ng-click="vm.create()">
+                    Submit
+                </uui-button>
+            </div>
+
+        </form>
+    </uui-form>
+
+</div>
