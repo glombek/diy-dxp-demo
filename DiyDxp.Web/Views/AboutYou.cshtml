@@ -23,7 +23,7 @@
 			{
 				<dt>Guessed gender</dt>
 				<dd>
-					@switch (@Model.Gender.Value.Item1)
+					@switch (@Model.Gender.Value.Gender)
 					{
 						case "male":
 							<text>🚹</text>
@@ -35,7 +35,7 @@
 							<text>?</text>
 							break;
 					}
-					@Model.Gender.Value.Item1 <small>(@(Model.Gender.Value.Item2 * 100)%)</small>
+					@Model.Gender.Value.Gender <small>(@(Model.Gender.Value.Probability * 100)%)</small>
 				</dd>
 				<dd></dd>
 			}

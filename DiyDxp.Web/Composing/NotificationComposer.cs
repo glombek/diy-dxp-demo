@@ -4,7 +4,7 @@ using Umbraco.Cms.Core.Notifications;
 
 namespace DiyDxp.Web.Composing
 {
-    public class NotifcationComposer : IComposer
+    public class NotificationComposer : IComposer
     {
         public void Compose(IUmbracoBuilder builder)
         {
